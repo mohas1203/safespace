@@ -1,0 +1,53 @@
+.landing-section{
+    margin-top: 100px;
+    text-align: ;
+
+}
+
+.landing-text-section{
+    margin-left: 150px;
+    
+}
+
+.button-section{
+    width: 70%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.landing-button{
+    width: 150px;
+    height: 40px;
+}
+
+.login-btn{
+    margin-left: 30px;
+}
+
+.landing-title{
+    font-family: "Poppins";
+    font-weight: 500;
+    font-size: 80px;
+    margin-bottom: 0px;
+}
+
+.landing-subtitle{
+    font-family: "Poppins";
+    font-weight: 300;
+    font-size: 40px;
+}
+
+
+#depression{
+    color: #03a9f4;
+}
+
+#depressure{
+    color: #f50057;
+    font-weight: 450;
+}
+
+#depressure-image{
+    width: 99%;
+    height: 99%;
+}
