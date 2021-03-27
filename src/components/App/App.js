@@ -2,24 +2,23 @@ import './App.css';
 import Header from '../Header/Header'
 import Landing from '../Landing/Landing'
 import Login from '../Login/Login'
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import Signup from '../Signup/Signup'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 function App() {
   return (
     <>
-    <Header />
     <Router>
+    <Header />
       <Switch>
         <Route exact path="/">
           <Landing />
         </Route>
         <Route path="/login">
           <Login />
+        </Route>
+        <Route path="/signup">
+          <Signup />
         </Route>
       </Switch>
     </Router>
