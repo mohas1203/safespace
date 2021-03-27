@@ -36,13 +36,16 @@ export default function Signup() {
 
     const createAccount = (e) =>{
         auth.createUserWithEmailAndPassword(email, password).then(cred => {
-            return db.collection("users").doc(cred.user.uid).set({
+            db.collection("users").doc(cred.user.uid).set({
                 firstname: firstname,
                 lastname: lastname,
                 photoURL: photourl,
+            }).then(() =>{
+                console.log("User Created")
+                // document.location.href = '/home'
+            }).catch((error) =>{
+                console.log(error)
             })
-        }).then(() =>{
-            console.log("User Created")
         })
     }
 
@@ -75,6 +78,10 @@ export default function Signup() {
                         <br></br>
                         <br></br>
                         <Button color="secondary" variant="contained" onClick={createAccount}>Create Account</Button>
+                        <br></br>
+                        <br></br>
+                        <br></br>
+                        <Typography id="warning">Please <b>ensure</b> that your password is <br></br> strong, or else data breaches may occur</Typography>
                     </CardContent>
                 </Card>
             </ThemeProvider>

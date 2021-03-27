@@ -30,17 +30,21 @@ export default function AuthHeader() {
         })
     }
 
+    const handleProfileClick = () =>{
+        document.location.href = '/profile'
+    }
+
     return (
         <ThemeProvider theme={theme}>
             <AppBar position="static">
                 <Toolbar>
                     <Typography variant="h6" className={classes.title}>
-                    <Link to="/" style={{ textDecoration: 'none', color: "#fff" }}>Depressure</Link>
+                    <Link to="/home" style={{ textDecoration: 'none', color: "#fff", fontFamily:"Poppins" }}>Depressure.</Link>
                     </Typography>
                     <Button color="inherit"><Link to="/home" style={{ textDecoration: 'none', color: "#fff" }}>Home</Link></Button>
                     <Button color="inherit"><Link to="/createpost" style={{ textDecoration: 'none', color: "#fff" }}>Create Post</Link></Button>
                     <Button color="inherit" onClick={handleSignout}><Link to="/" style={{ textDecoration: 'none', color: "#fff" }}>Signout</Link></Button>
-                    <Avatar alt={firstname} src={profilePic} />
+                    <Avatar style={{cursor:"pointer"}}alt={firstname} src={profilePic} onClick={handleProfileClick}/>
                 </Toolbar>
             </AppBar>
         </ThemeProvider>

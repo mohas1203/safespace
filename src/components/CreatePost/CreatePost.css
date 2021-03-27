@@ -1,0 +1,21 @@
+.create-post-section{
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+}
+
+.create-post-card{
+    padding: 90px;
+}
+
+#title-textfield{
+    width: 400px;
+}
+
+#body-textfield{
+    width: 400px;
+}
+
+#post-button{
+    width: 100px;
+}

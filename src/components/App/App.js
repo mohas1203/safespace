@@ -5,6 +5,7 @@ import Login from '../Login/Login'
 import Signup from '../Signup/Signup'
 import Home from '../Home/Home'
 import CreatePost from '../CreatePost/CreatePost'
+import UserProfile from '../UserProfile/UserProfile'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { auth } from '../../firebase'
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -24,9 +25,14 @@ function App() {
       <Route path="/createpost">
         <CreatePost />
       </Route>
+      <Route path="/profile">
+        <UserProfile />
+      </Route>
       </>
-    )
-  }
+    ) 
+    } else {
+      authenticatedRoutes = null;
+    }
   
   return (
     <>
