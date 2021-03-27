@@ -21,7 +21,7 @@ export default function Landing() {
                         <h1 className="landing-title">Remove The <span id="depression">Depression</span></h1>
                         <h1 className="landing-subtitle">Using <span id="depressure">Depressure</span></h1>
                         <div className="button-section">
-                            <Button color="primary" variant="contained" className="landing-button">Get Started</Button>
+                            <Button color="primary" variant="contained" className="landing-button"><Link to="/signup" style={{ textDecoration: 'none', color: "#fff" }}>Get Started</Link></Button>
                             <div className="login-btn">
                                 <Button color="secondary" variant="outlined" className="landing-button"><Link to="/login" style={{ textDecoration: 'none', color: "#f50057" }}>Login</Link></Button>
                             </div>
