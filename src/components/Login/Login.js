@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { Card, CardContent, Typography, TextField, Button } from "@material-ui/core"
 import { ThemeProvider } from "@material-ui/core" 
-import  { Redirect } from 'react-router-dom'
 import { theme } from "../../theme"
 import { auth } from "../../firebase"
 import './Login.css'
@@ -21,7 +20,7 @@ export default function Login() {
     const loginOnClick = () =>{
         auth.signInWithEmailAndPassword(email, password).then(() =>{
             console.log("it worked")
-            document.location.href = '/'
+            document.location.href = '/home'
         }).catch((error) =>{
             console.log("There is an error " + error)
         })
