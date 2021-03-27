@@ -42,7 +42,7 @@ export default function Signup() {
                 photoURL: photourl,
             }).then(() =>{
                 console.log("User Created")
-                // document.location.href = '/home'
+                document.location.href = '/home'
             }).catch((error) =>{
                 console.log(error)
             })
