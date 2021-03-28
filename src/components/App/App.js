@@ -6,6 +6,7 @@ import Signup from '../Signup/Signup'
 import Home from '../Home/Home'
 import CreatePost from '../CreatePost/CreatePost'
 import UserProfile from '../UserProfile/UserProfile'
+import PostDetail from '../PostDetail/PostDetail'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { auth } from '../../firebase'
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -27,6 +28,9 @@ function App() {
       </Route>
       <Route path="/profile">
         <UserProfile />
+      </Route>
+      <Route path="/postdetail">
+        <PostDetail />
       </Route>
       </>
     ) 

@@ -1,0 +1,12 @@
+.homepage-section{
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+
+}
+
+.homepage-card{
+    max-width: 500px;
+    max-height: 300px;
+    margin: 20px
+}

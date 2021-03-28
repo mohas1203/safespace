@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { ThemeProvider } from "@material-ui/core"
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -26,12 +26,13 @@ export default function CreatePost() {
         setBody(e.target.value)
     }
 
-    const createPost = () => {
-
+    useEffect(() =>{
         db.collection("users").doc(user.uid).get().then((snapshot) => {
             setProfilepic(snapshot.data().photoURL)
         })
+    }, )
 
+    const createPost = () => {
 
         db.collection("posts").add({
             profile_pic: profilepic,

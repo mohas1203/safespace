@@ -36,7 +36,7 @@ export default function UserProfile() {
     }, [])
 
     const detailedPostView = () => {
-        console.log("Detailed View")
+        document.location.href = '/postdetail'
     }
 
 
