@@ -5,14 +5,17 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import TextField from "@material-ui/core/TextField"
+import { auth } from "../../firebase"
+import { useAuthState } from "react-firebase-hooks/auth"
 import { theme } from "../../theme"
 import "./CreatePost.css"
+import { db } from '../../firebase';
 
 export default function CreatePost() {
 
     const [title, setTitle] = useState('')
     const [body, setBody] = useState('')
-
+    const [user] = useAuthState(auth)
 
     const handleTitleChange = (e) => {
         setTitle(e.target.value)
@@ -23,7 +26,16 @@ export default function CreatePost() {
     }
 
     const createPost = () => {
-        console.log("Handle Post")
+        db.collection("posts").add({
+            post_id: user.uid,
+            title: title,
+            body: body
+        }).then(()=>{
+            console.log("Document successfully written!")
+            document.location.href = '/home'
+        }).catch((error)=>{
+            console.log(error)
+        })
     }
 
     return (

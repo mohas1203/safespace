@@ -39,7 +39,7 @@ export default function AuthHeader() {
             <AppBar position="static">
                 <Toolbar>
                     <Typography variant="h6" className={classes.title}>
-                    <Link to="/home" style={{ textDecoration: 'none', color: "#fff", fontFamily:"Poppins" }}>Depressure.</Link>
+                    <Link to="/home" style={{ textDecoration: 'none', color: "#fff", fontFamily:"Poppins" }}>SafeSpace.</Link>
                     </Typography>
                     <Button color="inherit"><Link to="/home" style={{ textDecoration: 'none', color: "#fff" }}>Home</Link></Button>
                     <Button color="inherit"><Link to="/createpost" style={{ textDecoration: 'none', color: "#fff" }}>Create Post</Link></Button>

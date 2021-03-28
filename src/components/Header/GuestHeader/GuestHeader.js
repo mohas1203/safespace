@@ -16,7 +16,7 @@ export default function GuestHeader() {
             <AppBar position="static">
                 <Toolbar>
                     <Typography variant="h6" className={classes.title}>
-                    <Link to="/" style={{ textDecoration: 'none', color: "#fff", fontFamily:"Poppins" }}>Depressure.</Link>
+                    <Link to="/" style={{ textDecoration: 'none', color: "#fff", fontFamily:"Poppins" }}>SafeSpace.</Link>
                     </Typography>
                     <Button color="inherit"><Link to="/login" style={{ textDecoration: 'none', color: "#fff" }}>Login</Link></Button>
                     <Button color="inherit"><Link to="/signup" style={{ textDecoration: 'none', color: "#fff" }}>Signup</Link></Button>
