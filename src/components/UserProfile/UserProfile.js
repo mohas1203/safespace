@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
+import CardActions from '@material-ui/core/CardActions';
 import Typography from '@material-ui/core/Typography';
 import CardHeader from '@material-ui/core/CardHeader';
 import DeleteTwoToneIcon from '@material-ui/icons/DeleteTwoTone';
@@ -10,6 +11,7 @@ import Avatar from '@material-ui/core/Avatar';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { db, auth } from "../../firebase"
 import "./UserProfile.css"
+import { EmojiObjects } from '@material-ui/icons';
 
 
 export default function UserProfile() {
@@ -17,6 +19,7 @@ export default function UserProfile() {
     const [firstname, setFirstname] = useState('')
     const [profilepic, setProfilepic] = useState('')
     const [posts, setPosts] = useState([])
+    const [comments, setComments] = useState([])
 
     if (user){
         db.collection("users").doc(user.uid).get().then((snapshot) =>{
@@ -30,14 +33,12 @@ export default function UserProfile() {
         .then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
                 setPosts(prev => [...prev, doc.data()])
+                setComments(doc.data().comments)
 
             })
         })
     }, [])
 
-    const detailedPostView = () => {
-        document.location.href = '/postdetail'
-    }
 
 
 
@@ -78,7 +79,15 @@ export default function UserProfile() {
                                         title={posts[post].title == null ? "Deleted" : posts[post].title}
                                         />
                                         <CardContent>
-                                            <Typography style={{cursor:"pointer"}} onClick={detailedPostView}>{posts[post].body}</Typography>
+                                            <Typography>{posts[post].body}</Typography>
+                                            <br></br>
+                                            <Typography variant="h5">Comments</Typography>
+                                            {Object.keys(comments).map((comment) =>{
+                                                return (
+                                                    
+                                                    <ul>- {comments[comment]}</ul>
+                                                )
+                                            })}
                                         </CardContent>
                                     </Card>
                                 )

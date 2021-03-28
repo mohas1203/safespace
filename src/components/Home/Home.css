@@ -6,7 +6,10 @@
 }
 
 .homepage-card{
-    max-width: 500px;
-    max-height: 300px;
-    margin: 20px
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.post-comment-field{
+    width: 500px;
 }

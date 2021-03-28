@@ -17,6 +17,7 @@ export default function CreatePost() {
     const [body, setBody] = useState('')
     const [user] = useAuthState(auth)
     const [profilepic, setProfilepic] = useState('')
+    const [comments, getComments]= useState([])
 
     const handleTitleChange = (e) => {
         setTitle(e.target.value)
@@ -30,7 +31,7 @@ export default function CreatePost() {
         db.collection("users").doc(user.uid).get().then((snapshot) => {
             setProfilepic(snapshot.data().photoURL)
         })
-    }, )
+    }, [])
 
     const createPost = () => {
 
@@ -40,6 +41,7 @@ export default function CreatePost() {
             title: title,
             body: body,
             unique_id: Math.random(),
+            comments: [],
         }).then(()=>{
             console.log("Document successfully written!")
             document.location.href = '/home'
