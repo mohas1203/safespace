@@ -21,6 +21,7 @@ export default function Home() {
     const [comment, setComment] = useState('')
     const [posts, setPosts] = useState([])
     const [button, setButton] = useState(true)
+    const [reply, setReply] = useState('')
     const threshold = 0.5;
 
     useEffect(() =>{
@@ -86,10 +87,10 @@ export default function Home() {
                                                         doc.ref.update({
                                                             comments: comments
                                                         })
+                                                        setReply("Comment Sent")
                                                     })
                                                  })
                                             }}
-
                                             color="secondary" disabled={button}>
                                               <SendIcon />
                                             </IconButton>
@@ -97,6 +98,9 @@ export default function Home() {
                                         )
                                       }}
                                 />
+                                <br></br>
+                                <br></br>
+                                <Typography style={{color: "green"}}>{reply}</Typography>
                             </CardContent>
                         </Card>
                     </Grid>

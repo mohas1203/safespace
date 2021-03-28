@@ -68,7 +68,6 @@ export default function UserProfile() {
                                                         var current_post = posts
                                                         var x = posts.indexOf(posts[post])
                                                         current_post.splice(x, 1)
-                                                        
                                                         setPosts((prev) => [...prev, current_post])
                                                     })
                                                  })
