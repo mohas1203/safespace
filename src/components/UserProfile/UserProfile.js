@@ -17,11 +17,7 @@ export default function UserProfile() {
     const [firstname, setFirstname] = useState('')
     const [profilepic, setProfilepic] = useState('')
     const [posts, setPosts] = useState([])
-    // const [title, setTitle] = useState([])
-    // const [body, setBody] = useState([])
 
-
-    
     if (user){
         db.collection("users").doc(user.uid).get().then((snapshot) =>{
             setFirstname(snapshot.data().firstname)
@@ -36,14 +32,14 @@ export default function UserProfile() {
                 setPosts(prev => [...prev, doc.data()])
 
             })
-        }).then(() => {
-            console.log(posts)
         })
     }, [])
 
     const detailedPostView = () => {
         console.log("Detailed View")
     }
+
+
 
 
     return (
@@ -58,23 +54,33 @@ export default function UserProfile() {
                 </Grid>
                 <Grid item xs={6}>
                     <div className="user-post-card-section">
-                            {posts.map( (post, index) => {
+                            {Object.keys(posts).map((post, i) =>{
                                 return (
-
-                                    <Card className="user-post-card" onClick={detailedPostView}>
+                                    <Card className="user-post-card" >
                                         <CardHeader avatar={<Avatar alt={firstname} src={profilepic}/>}
                                         action={
-                                            <IconButton aria-label="settings">
+                                            <IconButton onClick={() =>{
+                                                db.collection("posts").where("unique_id", "==", posts[post].unique_id).get()
+                                                 .then((querySnapshot) =>{
+                                                    querySnapshot.forEach((doc) => {
+                                                        doc.ref.delete()
+                                                        var current_post = posts
+                                                        var x = posts.indexOf(posts[post])
+                                                        current_post.splice(x, 1)
+                                                        
+                                                        setPosts((prev) => [...prev, current_post])
+                                                    })
+                                                 })
+                                            }}>
                                                 <DeleteTwoToneIcon />
                                             </IconButton>
                                             }
-                                        title={post.title}
+                                        title={posts[post].title == null ? "Deleted" : posts[post].title}
                                         />
                                         <CardContent>
-                                            <Typography>{post.body}</Typography>
+                                            <Typography style={{cursor:"pointer"}} onClick={detailedPostView}>{posts[post].body}</Typography>
                                         </CardContent>
                                     </Card>
-
                                 )
                             })}
                         </div>
